@@ -11,7 +11,7 @@ app.use(express.json());
 app.use("/", router);
 
 const emailTransport = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
     user: process.env.GOOGLE_APP_USER,
     pass: process.env.GOOGLE_APP_PASSWORD,
@@ -24,6 +24,10 @@ emailTransport.verify((error) => {
   } else {
     console.log("Ready to Send");
   }
+});
+
+router.get("/", (req, res) => {
+  res.send("Hello Miss Magycal");
 });
 
 router.post("/contact", (req, res) => {
